@@ -6,8 +6,6 @@ fn read(name: &str) -> Vec<Option<i32>> {
     let mut values = Vec::new();
 
     for line in read_to_string(path).unwrap().lines() {
-        let line = line.to_string();
-
         // add options to support empty lines
         let value: Option<i32> = match line.parse() {
             Ok(value) => Some(value),
@@ -28,9 +26,7 @@ fn part01(input: &str) -> i32 {
 
     for each in values.iter() {
         match each {
-            Some(value) => {
-                elf += value
-            },
+            Some(value) => elf += value,
             None => {
                 if elf > max {
                     max = elf;
@@ -44,7 +40,6 @@ fn part01(input: &str) -> i32 {
     max
 }
 
-
 fn part02(input: &str) -> i32 {
     let values = read(input);
 
@@ -53,9 +48,7 @@ fn part02(input: &str) -> i32 {
 
     for each in values.iter() {
         match each {
-            Some(value) => {
-                elf += value
-            },
+            Some(value) => elf += value,
             None => {
                 elves.push(elf);
                 elf = 0;
@@ -72,10 +65,10 @@ fn part02(input: &str) -> i32 {
 
 pub fn solve() {
     // https://adventofcode.com/2022/day/1
-    
-    assert_eq!(part01("day01/test01"), 24000);  // ⭐
+
+    assert_eq!(part01("day01/test01"), 24000); // ⭐
     println!("Day 01 - Part 01 = {}", part01("day01/input"));
 
-    assert_eq!(part02("day01/test01"), 45000);  // ⭐
+    assert_eq!(part02("day01/test01"), 45000); // ⭐
     println!("Day 01 - Part 02 = {}", part02("day01/input"));
 }
